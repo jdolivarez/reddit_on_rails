@@ -1,5 +1,11 @@
 class LinksController < ApplicationController
   def show
+  	  @link = Link.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @link }
+    end
   end
 
   def new
@@ -16,7 +22,7 @@ class LinksController < ApplicationController
 
     respond_to do |format|
       if @link.save
-        format.html { redirect_to @link, notice: 'User was successfully created.' }
+        format.html { redirect_to @link, notice: 'Link was successfully created.' }
         format.json { render json: @link, status: :created, location: @link }
       else
         format.html { render action: "new" }
