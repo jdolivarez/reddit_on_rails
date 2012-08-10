@@ -2,7 +2,11 @@
 <%= link_to "Add a link", new_link_path %>
 <ul>
   <% @links.each do |link| %>
-    <li> <%= link_to link.title, link.url %></li>
+    <li> <%= link_to link.title, link.url %>  
+<%= link_to "+", votes_path(:vote => {:link_id => link.id, :up => true}), :method => :post %>
+<%= link_to "-", votes_path(:vote => {:link_id => link.id, :up => false}), :method => :post %>
+Votes: <%= link.votes.where(:up => true).count - link.votes.where(:up => false).count %>
+</li>
     <%= link_to "comments", link %>
    <% end %>
 </ul>
