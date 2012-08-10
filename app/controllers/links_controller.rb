@@ -1,6 +1,8 @@
 class LinksController < ApplicationController
   def show
-  	  @link = Link.find(params[:id])
+  
+    @link    = Link.find(params[:id])
+    @comment = Comment.new
 
     respond_to do |format|
       format.html # show.html.erb
