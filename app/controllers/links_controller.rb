@@ -19,6 +19,10 @@ class LinksController < ApplicationController
   end
   end
 
+  def index
+    redirect_to pages_path
+  end
+
   def create
     @link = Link.new(params[:link])
 
